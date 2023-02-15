@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package todo;
+
+
+// import "google/protobuf/timestamp.proto";
+// import "google/protobuf/empty.proto";
+
+
+service TodoService {
+    rpc CreateTodo(CreateTodoRequest) returns (Todo) {};
+}
+
+message CreateTodoRequest{
+    string name = 1;
+}
+
+message CreateTodoResponse {
+    Todo todo = 1;
+}
+
+message Todo {
+    int32 id = 1;
+    string name = 2;
+}
