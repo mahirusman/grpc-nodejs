@@ -26,18 +26,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const grpc = __importStar(require("@grpc/grpc-js"));
 const grpc_1 = require("./grpc");
 const todo_service_1 = require("./todo.service");
+const constants_1 = require("../constants");
 const server = new grpc.Server();
-const PORT = 3000;
 // Todo Services
 server.addService(grpc_1.proto.todo.TodoService.service, {
-    CreateTodo: todo_service_1.createTodoHandler
+    CreateTodo: todo_service_1.createTodoHandler,
 });
-server.bindAsync(`0.0.0.0:${PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
+server.bindAsync(`${constants_1.constants.HOST}:${constants_1.constants.PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
     if (err) {
         console.error(err);
         return;
     }
     server.start();
-    console.log(`🚀 Server listening on ${port}`);
+    console.log(`Server running at http://${constants_1.constants.HOST}:${constants_1.constants.PORT}`);
 });
 //# sourceMappingURL=index.js.map

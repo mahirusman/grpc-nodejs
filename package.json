@@ -6,7 +6,9 @@
   "scripts": {
     "start:dev": "ts-node ./src/index.ts",
     "build": "npx tsc && cp -R ./proto ./dist",
-    "start:build": "node ./dist/src/index.js"
+    "start:build": "node ./dist/src/index.js",
+    "start:client": "ts-node ./src/client.ts"
+
   },
   "devDependencies": {
     "ts-node": "^10.9.1",

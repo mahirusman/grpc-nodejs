@@ -3,15 +3,22 @@ syntax = "proto3";
 package todo;
 
 
-// import "google/protobuf/timestamp.proto";
-// import "google/protobuf/empty.proto";
-
-
 service TodoService {
-    rpc CreateTodo(CreateTodoRequest) returns (Todo) {};
+    rpc CreateTodo(CreateTodoRequest) returns (array) {};
+    rpc updateTodo(updaredTodoRequest) returns (CreateTodoResponse) {}
 }
 
-message CreateTodoRequest{
+message array {
+    repeated CreateTodoResponse responseinArray = 1; 
+}
+
+
+
+message updaredTodoRequest {
+    int32 id = 1;
+}
+
+message CreateTodoRequest {
     string name = 1;
 }
 

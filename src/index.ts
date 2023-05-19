@@ -1,18 +1,19 @@
 import * as grpc from "@grpc/grpc-js";
 import { TodoServiceHandlers } from "../pb/todo/TodoService";
 import { proto } from "./grpc";
-import { createTodoHandler } from "./todo.service";
+import { createTodoHandler,updateTodoHandler } from "./todo.service";
+import { constants } from "../constants";
 
 const server = new grpc.Server();
-const PORT = 3000;
 
 // Todo Services
 server.addService(proto.todo.TodoService.service, {
   CreateTodo: createTodoHandler,
+  updateTodo:updateTodoHandler
 } as TodoServiceHandlers);
 
 server.bindAsync(
-  `0.0.0.0:${PORT}`,
+  `${constants.HOST}:${constants.PORT}`,
   grpc.ServerCredentials.createInsecure(),
   (err, port) => {
     if (err) {
@@ -20,6 +21,6 @@ server.bindAsync(
       return;
     }
     server.start();
-    console.log(`🚀 Server listening on ${port}`);
+    console.log(`Server running at http://${constants.HOST}:${constants.PORT}`);
   }
 );

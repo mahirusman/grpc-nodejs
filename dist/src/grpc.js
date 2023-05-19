@@ -39,7 +39,7 @@ const options = {
     oneofs: true,
 };
 // const PORT = 3000;
-const PROTO_FILE = '../proto/todo.proto';
+const PROTO_FILE = "../proto/todo.proto";
 const packageDef = protoLoader.loadSync(path_1.default.resolve(__dirname, PROTO_FILE), options);
 exports.proto = grpc.loadPackageDefinition(packageDef);
 // export const server = new grpc.Server();
