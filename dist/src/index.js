@@ -31,6 +31,7 @@ const server = new grpc.Server();
 // Todo Services
 server.addService(grpc_1.proto.todo.TodoService.service, {
     CreateTodo: todo_service_1.createTodoHandler,
+    updateTodo: todo_service_1.updateTodoHandler,
 });
 server.bindAsync(`${constants_1.constants.HOST}:${constants_1.constants.PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
     if (err) {

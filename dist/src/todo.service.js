@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTodoHandler = void 0;
+exports.updateTodoHandler = exports.createTodoHandler = void 0;
 const todos = [];
 const createTodoHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -21,7 +21,7 @@ const createTodoHandler = (req, res) => __awaiter(void 0, void 0, void 0, functi
         console.log('todo', todo);
         todos.push(todo);
         res(null, {
-            todo: todo,
+            todo: todos,
         });
     }
     catch (err) {
@@ -33,4 +33,26 @@ const createTodoHandler = (req, res) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.createTodoHandler = createTodoHandler;
+const updateTodoHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log('update is here', req.request);
+        const todo = {
+            id: todos.length + 1,
+            name: req.request.name,
+        };
+        console.log('todo', todo);
+        todos.push(todo);
+        res(null, {
+            todo: todos,
+        });
+    }
+    catch (err) {
+        console.log('err', err);
+        // res({
+        //   code: grpc.status.INTERNAL,
+        //   message: err.message,
+        // });
+    }
+});
+exports.updateTodoHandler = updateTodoHandler;
 //# sourceMappingURL=todo.service.js.map
