@@ -2,9 +2,6 @@ const grpc = require("@grpc/grpc-js");
 import { constants } from "../constants";
 import { proto } from "./grpc";
 
-
-
-
 // Initialize the client
 const client = new proto.todo.TodoService(
   `${constants.HOST}:${constants.PORT}`,
@@ -17,17 +14,30 @@ client.CreateTodo({ name: "how are you sir" }, (err: any, response: any) => {
     console.error(err);
     return;
   }
-  console.log('here is goes',response);
+  console.log("here is response", response);
 });
 
 // Send a request to the server
-client.updateTodo({ id:1 }, (err: any, response: any) => {
-  if (err) {
-    console.error(err);
-    return;
+client.updateTodo(
+  { id: 1, name: "what is going sir" },
+  (err: any, response: any) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log("updateTodo result", response);
   }
-  console.log('updateTodo result',response);
-});
+);
 
-
-
+// Send a request to the server
+client.greateManyTime(
+  { firstName: "usman", lastName: "what is going sir" },
+  (err: any, response: any) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log("firstName result", response);
+    response.on("data");
+  }
+);

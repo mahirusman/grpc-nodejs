@@ -1,11 +1,11 @@
 // Original file: proto/todo.proto
 
-import type { Todo as _todo_Todo, Todo__Output as _todo_Todo__Output } from '../todo/Todo';
+import type { CreateTodoResponse as _todo_CreateTodoResponse, CreateTodoResponse__Output as _todo_CreateTodoResponse__Output } from '../todo/CreateTodoResponse';
 
-export interface CreateTodoResponse {
-  'todo'?: (_todo_Todo | null);
+export interface createTodoResponse {
+  'responseinArray'?: (_todo_CreateTodoResponse)[];
 }
 
-export interface CreateTodoResponse__Output {
-  'todo': (_todo_Todo__Output | null);
+export interface createTodoResponse__Output {
+  'responseinArray': (_todo_CreateTodoResponse__Output)[];
 }
