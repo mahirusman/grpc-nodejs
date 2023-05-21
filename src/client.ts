@@ -28,16 +28,3 @@ client.updateTodo(
     console.log("updateTodo result", response);
   }
 );
-
-// Send a request to the server
-client.greateManyTime(
-  { firstName: "usman", lastName: "what is going sir" },
-  (err: any, response: any) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log("firstName result", response);
-    response.on("data");
-  }
-);

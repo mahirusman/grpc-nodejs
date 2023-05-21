@@ -1,12 +1,12 @@
 // Original file: proto/todo.proto
 
 
-export interface updaredTodoRequest {
+export interface UpdaredTodoRequest {
   'id'?: (number);
   'name'?: (string);
 }
 
-export interface updaredTodoRequest__Output {
+export interface UpdaredTodoRequest__Output {
   'id': (number);
   'name': (string);
 }

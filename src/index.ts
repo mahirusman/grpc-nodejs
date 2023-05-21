@@ -1,11 +1,7 @@
 import * as grpc from "@grpc/grpc-js";
 import { TodoServiceHandlers } from "../pb/todo/TodoService";
 import { proto } from "./grpc";
-import {
-  createTodoHandler,
-  updateTodoHandler,
-  GreateManyTime,
-} from "./todo.service";
+import { createTodoHandler, updateTodoHandler } from "./todo.service";
 import { constants } from "../constants";
 
 const server = new grpc.Server();
@@ -14,7 +10,6 @@ const server = new grpc.Server();
 server.addService(proto.todo.TodoService.service, {
   CreateTodo: createTodoHandler,
   updateTodo: updateTodoHandler,
-  greateManyTime: GreateManyTime,
 } as any);
 
 server.bindAsync(

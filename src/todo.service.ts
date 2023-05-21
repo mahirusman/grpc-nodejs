@@ -1,17 +1,14 @@
 import * as grpc from "@grpc/grpc-js";
-import { createTodoResponse } from "../pb/todo/CreateTodoResponse";
+import { CreateTodoResponse } from "../pb/todo/CreateTodoResponse";
 import { CreateTodoRequest } from "../pb/todo/CreateTodoRequest";
 
-import { updaredTodoRequest } from "../pb/todo/updaredTodoRequest";
-
-import { GreatManyTimeRequest } from "../pb/todo/GreatManyTimeRequest";
-import { GreatManytimResponse } from "../pb/todo/GreatManytimResponse";
+import { UpdaredTodoRequest } from "../pb/todo/UpdaredTodoRequest";
 
 const todos: any = [];
 
 export const createTodoHandler = async (
-  req: grpc.ServerUnaryCall<CreateTodoRequest, createTodoResponse>,
-  res: grpc.sendUnaryData<createTodoResponse>
+  req: grpc.ServerUnaryCall<CreateTodoRequest, CreateTodoResponse>,
+  res: grpc.sendUnaryData<CreateTodoResponse>
 ) => {
   try {
     const todo = {
@@ -33,8 +30,8 @@ export const createTodoHandler = async (
 };
 
 export const updateTodoHandler = async (
-  req: grpc.ServerUnaryCall<updaredTodoRequest, updaredTodoRequest>,
-  res: grpc.sendUnaryData<createTodoResponse>
+  req: grpc.ServerUnaryCall<UpdaredTodoRequest, UpdaredTodoRequest>,
+  res: grpc.sendUnaryData<CreateTodoResponse>
 ) => {
   try {
     const matchIndex = todos.findIndex(
@@ -56,22 +53,6 @@ export const updateTodoHandler = async (
     });
   } catch (err: any) {
     console.log("err", err);
-    // res({
-    //   code: grpc.status.INTERNAL,
-    //   message: err.message,
-    // });
-  }
-};
-
-export const GreateManyTime = async (req: any, res: any) => {
-  try {
-    console.log("req.request", req);
-
-    req.write({ name: "usman" });
-
-    req.end();
-  } catch (error) {
-    console.log("err", error);
     // res({
     //   code: grpc.status.INTERNAL,
     //   message: err.message,

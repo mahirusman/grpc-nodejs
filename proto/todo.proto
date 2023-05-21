@@ -4,21 +4,15 @@ package todo;
 
 
 service TodoService {
-    rpc CreateTodo(CreateTodoRequest) returns (createTodoResponse) {};
-    rpc updateTodo(updaredTodoRequest) returns (createTodoResponse) {}
+    rpc CreateTodo(CreateTodoRequest) returns (CreateTodoResponse) {};
+    rpc updateTodo(UpdaredTodoRequest) returns (CreateTodoResponse) {}
 }
 
-message createTodoResponse {
+message CreateTodoResponse {
     repeated CreateTodoResponse responseinArray = 1; 
 }
 
-
-
-
-
-
-
-message updaredTodoRequest {
+message UpdaredTodoRequest {
     int32 id = 1;
     string name=2;
 }
@@ -27,16 +21,10 @@ message CreateTodoRequest {
     string name = 1;
 }
 
-message CreateTodoResponse {
-    int32 id = 1;
-    string name = 2;
-}
+
 
 message Todo {
     int32 id = 1;
     string name = 2;
 }
 
-message updateTodoResponse {
-    
-}
